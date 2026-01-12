@@ -1,22 +1,19 @@
 # console_interface.py
-# Membre 3 – Interface console SOC
+# Interface console SOC
 
 import model_train
 import pandas as pd
 
 print("\n=== Interface SOC – Alert Scoring ===")
 
-# تشغيل التدريب (كما هو)
-# model_train.py يدرّب الموديل ويطبع النتائج
-# ونستعمل df الموجود في نفس الجلسة
+# model_train.py
 df = model_train.df if hasattr(model_train, "df") else None
 
-# إذا df مش متاح (احتياط)
 if df is None:
     print("[INFO] Les données sont générées depuis le module d'entraînement.")
     df = model_train.generate_alerts(500)
 
-# إدخال Threshold
+# Threshold
 threshold = float(input("Donner le seuil de criticité (0 à 1) : "))
 
 # Filtrage + Tri
